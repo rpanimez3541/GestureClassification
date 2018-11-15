@@ -18,6 +18,7 @@ def put_images(FILE_NAME):
         try:
             resp=requests.get(url[1],stream=True)
             path_to_write=os.path.join(os.getcwd(),FILE_NAME.split("_")[0],url[1].split("/")[-1])
+            # path_to_write=os.path.join(os.getcwd(),FILE_NAME.split("_")[0],url[1].split("/")[-1])
             outfile=open(path_to_write,'wb')
             outfile.write(resp.content)
             outfile.close()

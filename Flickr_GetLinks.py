@@ -3,7 +3,7 @@ import pandas as pd
 import sys
 key='f5d1291b86942c7cbd6a73a1da78df33'
 secret='1b8752f26a45bdbd'
-def get_urls(image_tag,MAX_COUNT):
+def get_urls(MAX_COUNT, image_tag):
     flickr = FlickrAPI(key, secret)
     photos = flickr.walk(text=image_tag,
                             tag_mode='all',
@@ -30,8 +30,13 @@ def get_urls(image_tag,MAX_COUNT):
     urls.to_csv(image_tag+"_urls.csv")
     print("Done!!!")
 def main():
-    tag=sys.argv[1]
-    MAX_COUNT=int(sys.argv[2])
-    get_urls(tag,MAX_COUNT)
+    MAX_COUNT=int(sys.argv[1])
+    sep=","
+    tag1=sys.argv[2]
+    tag2=sys.argv[3]
+    tag3=sys.argv[4]
+    seq=(tag1, tag2, tag3)
+    tags=sep.join(seq)
+    get_urls(MAX_COUNT, tags)
 if __name__=='__main__':
     main()
